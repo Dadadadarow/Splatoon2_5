@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+// using System.IO.Ports;
 
 public class playerController : MonoBehaviour
 {
@@ -12,11 +13,13 @@ public class playerController : MonoBehaviour
     float force = 45.0f;
     float maxSpeed = 2.0f;
 
-
+    // private SerialPort serialPort;
     void Start()
     {
         this.rigid = GetComponent<Rigidbody>();
         transform.Rotate(0f,225f,0f);
+        // serialPort = new SerialPort("COM3", 9600);
+        // serialPort.Open();
     }
 
     void Update() 
@@ -50,7 +53,10 @@ public class playerController : MonoBehaviour
         {
             this.rigid.AddForce(force*Mathf.Sin(jairo*Mathf.Deg2Rad), 0, force*Mathf.Cos(jairo*Mathf.Deg2Rad));
         }
-        
-
+        // if (serialPort.IsOpen)
+        // {
+        //     string data = serialPort.ReadLine();
+        //     Debug.Log(data);
+        // }
     }
 }
