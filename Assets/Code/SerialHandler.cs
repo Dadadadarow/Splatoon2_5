@@ -14,7 +14,7 @@ public class SerialHandler : MonoBehaviour
     private bool isRunning_ = false;
     private string message_;
     private bool isNewMassageReceived_ = false;
-    void awake()
+    void Awake()
     {
         Open();
     }
@@ -34,7 +34,8 @@ public class SerialHandler : MonoBehaviour
     }
     private void Open()
     {
-        serialPort_ = new SerialPort(portName, baudRate, Parity.None, 8, StopBits.One);
+        //serialPort_ = new SerialPort(portName, baudRate, Parity.None, 8, StopBits.One);
+        serialPort_ = new SerialPort(portName, baudRate);
         serialPort_.Open();
         isRunning_ = true;
         thread_ = new Thread(Read);
