@@ -26,8 +26,8 @@ public class SerialCube : MonoBehaviour {
 	void OnDataReceived(string message) {
 		try {
 			string[] angles = message.Split(',');
-			text.text = "x:" + angles[0] + "\n" + "y:" + angles[1] + "\n" + "z:" + angles[2] + "\n"; // シリアルの値をテキストに表示
-            Debug.Log(">>>>>>>"+angles[0]);
+			text.text = "x:" + angles[0] + "\n" + "y:" + angles[1] + "\n" + "z:" + angles[2] + "\n" + "Speed:" + angles[3] + "\n"; // シリアルの値をテキストに表示
+      //Debug.Log(">>>>>>>"+angles[0]);
 			// Vectorは前から順番にx,y,zだけど、そのままセットすると
 			// Unity上の回転の見た目が変になるので、y,zの値を入れ替えている。
 			Vector3 angle = new Vector3(float.Parse(angles[0]), float.Parse(angles[2]), float.Parse(angles[1]));
