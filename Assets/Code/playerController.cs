@@ -12,14 +12,15 @@ public class playerController : MonoBehaviour
     Rigidbody rigid;
     float force = 45.0f;
     float maxSpeed = 2.0f;
+    float wSpeed = 0.0f;
+    public SerialHandler serialHandler;
 
-    // private SerialPort serialPort;
-    void Start()
+	// private SerialPort serialPort;
+	void Start()
     {
         this.rigid = GetComponent<Rigidbody>();
         transform.Rotate(0f,225f,0f);
-        // serialPort = new SerialPort("COM3", 9600);
-        // serialPort.Open();
+		//serialHandler.OnDataReceived += OnDataReceived;
     }
 
     void Update() 
@@ -38,7 +39,7 @@ public class playerController : MonoBehaviour
             jairo -= 10;
         }
 
-        Debug.Log(jairo);
+        //Debug.Log(jairo);
         maxAngle = jairo;
 
         //minAngle(225)とmaxAngle(225+jairo)の差分を細かく分けて滑らかに回転
@@ -47,7 +48,6 @@ public class playerController : MonoBehaviour
         //回転終了
 
         //直進
-        
         float speed = Mathf.Sqrt(rigid.velocity.x*rigid.velocity.x+rigid.velocity.z*rigid.velocity.z);
         if (speed < this.maxSpeed)
         {
@@ -59,4 +59,12 @@ public class playerController : MonoBehaviour
         //     Debug.Log(data);
         // }
     }
+	void OnDataReceived(string message) {
+		try {
+			string[] angles = message.Split(',');
+			wSpeed = float.Parse(angles[3]);
+		} catch (System.Exception e) {
+			Debug.LogWarning(e.Message);
+		}
+	}
 }

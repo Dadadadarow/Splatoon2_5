@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   portName: COM7
-  baudRate: 9600
+  baudRate: 115200
 --- !u!4 &116898004
 Transform:
   m_ObjectHideFlags: 0
@@ -1067,7 +1067,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 100, y: -54.189026}
-  m_SizeDelta: {x: 160, y: 78.378}
+  m_SizeDelta: {x: 160, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1305292829
 MonoBehaviour:
@@ -1358,6 +1358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e084b5ef541f74e51a9ea6443d7ac3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serialCube: {fileID: 0}
 --- !u!65 &2059439845
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -17,7 +17,6 @@ public class SerialCube : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
 	}
 
 	/*
@@ -27,9 +26,10 @@ public class SerialCube : MonoBehaviour {
 		try {
 			string[] angles = message.Split(',');
 			text.text = "x:" + angles[0] + "\n" + "y:" + angles[1] + "\n" + "z:" + angles[2] + "\n" + "Speed:" + angles[3] + "\n"; // シリアルの値をテキストに表示
-      //Debug.Log(">>>>>>>"+angles[0]);
+			//text.text = "Speed:" + angles[3] + "\n"; // シリアルの値をテキストに表示
 			// Vectorは前から順番にx,y,zだけど、そのままセットすると
 			// Unity上の回転の見た目が変になるので、y,zの値を入れ替えている。
+			//walkSpeed = float.Parse(angles[3]);
 			Vector3 angle = new Vector3(float.Parse(angles[0]), float.Parse(angles[2]), float.Parse(angles[1]));
 			cube.transform.rotation = Quaternion.Euler(angle);
 		} catch (System.Exception e) {
