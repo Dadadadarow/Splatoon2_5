@@ -12,7 +12,7 @@ public class SerialCube : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//信号を受信したときに、そのメッセージの処理を行う
-		serialHandler.OnDataReceived += OnDataReceived;
+		//serialHandler.OnDataReceived += OnDataReceived;
 	}
 
 	// Update is called once per frame

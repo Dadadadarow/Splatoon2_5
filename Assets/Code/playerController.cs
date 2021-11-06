@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 // using System.IO.Ports;
 
 public class playerController : MonoBehaviour
@@ -13,14 +14,16 @@ public class playerController : MonoBehaviour
     float force = 45.0f;
     float maxSpeed = 2.0f;
     float wSpeed = 0.0f;
+    float control = 0.0f;
     public SerialHandler serialHandler;
+	public Text text;
 
 	// private SerialPort serialPort;
 	void Start()
     {
         this.rigid = GetComponent<Rigidbody>();
         transform.Rotate(0f,225f,0f);
-		//serialHandler.OnDataReceived += OnDataReceived;
+		serialHandler.OnDataReceived += OnDataReceived;
     }
 
     void Update() 
@@ -30,13 +33,15 @@ public class playerController : MonoBehaviour
         //回転
         //本来はジャイロセンサーから値を読み取ってjairoに入れ込む
         //今は特別にキー入力とする。
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        //if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (control < -60.0f)
         {
-            jairo += 10;
+            jairo += 1;
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        //if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (control > 60.0f)
         {
-            jairo -= 10;
+            jairo -= 1;
         }
 
         //Debug.Log(jairo);
@@ -48,6 +53,10 @@ public class playerController : MonoBehaviour
         //回転終了
 
         //直進
+        if (wSpeed > 1.0f)
+            maxSpeed = 5.0f;
+        else
+            maxSpeed = 2.0f;
         float speed = Mathf.Sqrt(rigid.velocity.x*rigid.velocity.x+rigid.velocity.z*rigid.velocity.z);
         if (speed < this.maxSpeed)
         {
@@ -62,7 +71,12 @@ public class playerController : MonoBehaviour
 	void OnDataReceived(string message) {
 		try {
 			string[] angles = message.Split(',');
+            text.text = "x:" + angles[0] + "\n" + "y:" + angles[1] + "\n" + "z:" + angles[2] + "\n" + "Speed:" + angles[3] + "\n"; // シリアルの値をテキストに表示
 			wSpeed = float.Parse(angles[3]);
+            control = float.Parse(angles[1]);
+
+            if (wSpeed > 1.1f)
+                text.text = "Running!!!\n";
 		} catch (System.Exception e) {
 			Debug.LogWarning(e.Message);
 		}
