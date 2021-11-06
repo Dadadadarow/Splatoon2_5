@@ -34,7 +34,6 @@ public class SerialHandler : MonoBehaviour
     }
     private void Open()
     {
-        //serialPort_ = new SerialPort(portName, baudRate, Parity.None, 8, StopBits.One);
         serialPort_ = new SerialPort(portName, baudRate);
         serialPort_.Open();
         isRunning_ = true;
