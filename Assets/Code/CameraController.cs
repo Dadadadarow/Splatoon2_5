@@ -26,5 +26,8 @@ public class CameraController : MonoBehaviour
         //localAngle.z = 0;
         myTransform.localEulerAngles = localAngle;
 
+
+
+
     }
 }
