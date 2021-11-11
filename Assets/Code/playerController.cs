@@ -26,6 +26,7 @@ public class playerController : MonoBehaviour
 		serialHandler.OnDataReceived += OnDataReceived;
     }
 
+// test
     void Update() 
     {
         //回転と直進の２つに分割する。
