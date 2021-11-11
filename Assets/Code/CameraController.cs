@@ -25,9 +25,5 @@ public class CameraController : MonoBehaviour
         localAngle.y = playerRot;
         //localAngle.z = 0;
         myTransform.localEulerAngles = localAngle;
-
-
-
-
     }
 }
