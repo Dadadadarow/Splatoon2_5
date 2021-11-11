@@ -19,6 +19,7 @@ public class playerController : MonoBehaviour
 	public Text text;
 
 	// private SerialPort serialPort;
+    // test
 	void Start()
     {
         this.rigid = GetComponent<Rigidbody>();
