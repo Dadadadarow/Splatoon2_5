@@ -116,8 +116,8 @@ MonoBehaviour:
     brushHeightTexture: {fileID: 0}
     brushScale: 0.07
     rotateAngle: 0
-    brushNormalBlend: 0
-    brushHeightBlend: 0
+    brushNormalBlend: 0.094
+    brushHeightBlend: 0.137
     brushColor: {r: 0.7058824, g: 0.6431373, b: 0.40784314, a: 1}
     colorBlendType: 0
     normalBlendType: 0
