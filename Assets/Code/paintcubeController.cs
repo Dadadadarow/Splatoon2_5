@@ -22,7 +22,10 @@ public class paintcubeController : MonoBehaviour
         {
             Material mat = this.GetComponent<Renderer>().material;
             mat.color = new Color(1.0f,1.0f,0.0f,0.3f);
-            yellowPoint += 1;
+            if (color == 0 || color==2)
+            {
+                yellowPoint += 1;
+            }
             if (color == 2)
             {
                 redPoint -= 1;
@@ -34,10 +37,13 @@ public class paintcubeController : MonoBehaviour
         {
             Material mat = this.GetComponent<Renderer>().material;
             mat.color = new Color(1.0f,0.0f,0.0f,0.3f);
-            redPoint += 1;
+            if (color == 0 || color == 1)
+            {
+                redPoint += 1;
+            }
             if (color == 1)
             {
-                yellowPoint -=1;
+                yellowPoint -= 1;
             }
             color = 2 ;//赤色状態
         }

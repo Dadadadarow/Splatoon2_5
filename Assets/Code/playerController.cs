@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class playerController : MonoBehaviour
 {
-    float jairo = 225f; //初期の値のRotation.yの値
+    float jairo = 180f; //初期の値のRotation.yの値
     //Vector3 jairoDir = new Vector3(0f, 0f, 0f);
-    float minAngle = 225f;
-	float maxAngle = 225f;
+    float minAngle = 180f;
+	float maxAngle = 180f;
     Rigidbody rigid;
     float force = 45.0f;
     float maxSpeed = 2.0f;
@@ -23,7 +23,7 @@ public class playerController : MonoBehaviour
 	void Start()
     {
         this.rigid = GetComponent<Rigidbody>();
-        transform.Rotate(0f,225f,0f);
+        transform.Rotate(0f,180f,0f);
 		serialHandler.OnDataReceived += OnDataReceived;
     }
 
@@ -50,10 +50,9 @@ public class playerController : MonoBehaviour
             jairo -= 1;
         }
 
-        //Debug.Log(jairo);
         maxAngle = jairo;
 
-        //minAngle(225)とmaxAngle(225+jairo)の差分を細かく分けて滑らかに回転
+        //minAngle(180)とmaxAngle(180+jairo)の差分を細かく分けて滑らかに回転
         float angle = Mathf.LerpAngle(minAngle, maxAngle, Time.time);
 		transform.eulerAngles = new Vector3(0, angle, 0);
         //回転終了

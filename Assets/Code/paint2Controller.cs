@@ -20,7 +20,10 @@ public class paint2Controller : MonoBehaviour
         {
             Material mat = this.GetComponent<Renderer>().material;
             mat.color = new Color(1.0f,1.0f,0.0f,0.3f);
-            paintcubeController.yellowPoint += 1;
+            if (color == 0 || color == 2)
+            {
+                paintcubeController.yellowPoint += 1;
+            }
             if (color == 2)
             {
                 paintcubeController.redPoint -= 1;
@@ -32,7 +35,10 @@ public class paint2Controller : MonoBehaviour
         {
             Material mat = this.GetComponent<Renderer>().material;
             mat.color = new Color(1.0f,0.0f,0.0f,0.3f);
-            paintcubeController.redPoint += 1;
+            if (color == 0 || color == 1)
+            {
+                paintcubeController.redPoint += 1;   
+            }
             if (color == 1)
             {
                 paintcubeController.yellowPoint -=1;
