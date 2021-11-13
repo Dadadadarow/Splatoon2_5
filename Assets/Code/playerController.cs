@@ -29,6 +29,11 @@ public class playerController : MonoBehaviour
 
     void Update() 
     {
+
+        if (Input.GetKeyDown(KeyCode.Z)){
+            GetComponent<AudioSource>().Play();
+        }
+
         //回転と直進の２つに分割する。
 
         //回転
