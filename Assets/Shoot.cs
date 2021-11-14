@@ -13,7 +13,7 @@ public class Shoot : MonoBehaviour {
     // 弾丸の速度
     public float speed = 1000;
     private static int shoot_flag = 0;
-    SerialHandler serialHandler;
+    SerialHandlerIn serialHandlerIn;
  
 	// Use this for initialization
 	void Start () {
@@ -40,13 +40,4 @@ public class Shoot : MonoBehaviour {
         }
         shoot_flag = playerController.trigger;
 	}
-
-    // 	void OnDataReceived(string message) {
-	// 	try {
-	// 		string[] angles = message.Split(',');
-    //         trigger = int.Parse(angles[5]);
-	// 	} catch (System.Exception e) {
-	// 		Debug.LogWarning(e.Message);
-	// 	}
-	// }
 }

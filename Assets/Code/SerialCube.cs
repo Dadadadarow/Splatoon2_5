@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SerialCube : MonoBehaviour {
 
-	public SerialHandler serialHandler;
+	public SerialHandlerIn serialHandlerIn;
 	public Text text;
 	public GameObject cube;
 

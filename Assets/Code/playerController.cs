@@ -17,7 +17,7 @@ public class playerController : MonoBehaviour
     // float control = 0.0f;
     float gyro = 0.0f;
     public static int trigger = 0;
-    public SerialHandler serialHandler;
+    public SerialHandlerIn serialHandlerIn;
 	// public Text text;
 
 	// private SerialPort serialPort;
@@ -26,7 +26,7 @@ public class playerController : MonoBehaviour
     {
         this.rigid = GetComponent<Rigidbody>();
         transform.Rotate(0f,225f,0f);
-		serialHandler.OnDataReceived += OnDataReceived;
+		serialHandlerIn.OnDataReceived += OnDataReceived;
     }
 
     void Update() 

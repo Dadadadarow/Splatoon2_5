@@ -2,11 +2,12 @@ using UnityEngine;
 using System.Collections;
 using System.IO.Ports;
 using System.Threading;
-public class SerialHandler : MonoBehaviour
+public class SerialHandlerIn : MonoBehaviour
 {
     public delegate void SerialDataReceivedEventHandler(string message);
     public event SerialDataReceivedEventHandler OnDataReceived;
 
+    // public string portName = "COM8";
     public string portName = "COM8";
     public int baudRate = 115200;
     private SerialPort serialPort_;

@@ -295,7 +295,7 @@ GameObject:
   - component: {fileID: 116898004}
   - component: {fileID: 116898003}
   m_Layer: 0
-  m_Name: SerialHandler
+  m_Name: SerialHandlerIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -310,7 +310,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 116898002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a21bae1b3a2a1a4a8b66c6ea53d7957, type: 3}
+  m_Script: {fileID: 11500000, guid: 0bb6eeed441e91c4089e202152ecf205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   portName: COM8
@@ -1574,7 +1574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb326a2c606d8684aa606ec2b8cdf9f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serialHandler: {fileID: 116898003}
+  serialHandlerIn: {fileID: 0}
   text: {fileID: 1305292829}
   cube: {fileID: 71069}
 --- !u!4 &208276353
@@ -3003,8 +3003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e084b5ef541f74e51a9ea6443d7ac3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serialHandler: {fileID: 116898003}
-  text: {fileID: 1305292829}
+  serialHandlerIn: {fileID: 0}
 --- !u!65 &2059439845
 BoxCollider:
   m_ObjectHideFlags: 0
