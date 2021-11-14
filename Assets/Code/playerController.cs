@@ -14,9 +14,11 @@ public class playerController : MonoBehaviour
     float force = 45.0f;
     float maxSpeed = 2.0f;
     float wSpeed = 0.0f;
-    float control = 0.0f;
+    // float control = 0.0f;
+    float gyro = 0.0f;
+    public static int trigger = 0;
     public SerialHandler serialHandler;
-	public Text text;
+	// public Text text;
 
 	// private SerialPort serialPort;
     // test
@@ -30,22 +32,21 @@ public class playerController : MonoBehaviour
     void Update() 
     {
 
-        if (Input.GetKeyDown(KeyCode.Z)){
+        if (trigger == 1){
             GetComponent<AudioSource>().Play();
         }
 
         //回転と直進の２つに分割する。
-
         //回転
         //本来はジャイロセンサーから値を読み取ってjairoに入れ込む
         //今は特別にキー入力とする。
         //if (Input.GetKeyDown(KeyCode.RightArrow))
-        if (control < -60.0f)
+        if (gyro < -1.2f)
         {
             jairo += 1;
         }
         //if (Input.GetKeyDown(KeyCode.LeftArrow))
-        if (control > 60.0f)
+        if (gyro > 1.2f)
         {
             jairo -= 1;
         }
@@ -68,21 +69,19 @@ public class playerController : MonoBehaviour
         {
             this.rigid.AddForce(force*Mathf.Sin(jairo*Mathf.Deg2Rad), 0, force*Mathf.Cos(jairo*Mathf.Deg2Rad));
         }
-        // if (serialPort.IsOpen)
-        // {
-        //     string data = serialPort.ReadLine();
-        //     Debug.Log(data);
-        // }
     }
 	void OnDataReceived(string message) {
 		try {
 			string[] angles = message.Split(',');
-            text.text = "x:" + angles[0] + "\n" + "y:" + angles[1] + "\n" + "z:" + angles[2] + "\n" + "Speed:" + angles[3] + "\n"; // シリアルの値をテキストに表示
-			wSpeed = float.Parse(angles[3]);
-            control = float.Parse(angles[1]);
+            // text.text = "x:" + angles[0] + "\n" + "y:" + angles[1] + "\n" + "z:" + angles[2] + "\n" + "Speed:" + angles[3] + "Gyro:" + angles[4] + "\n"; // シリアルの値をテキストに表示
+			wSpeed = float.Parse(angles[0]);
+            //control = float.Parse(angles[1]);
+            gyro = float.Parse(angles[4]);
+            // Debug.Log(gyro);
+            trigger = int.Parse(angles[5]);
 
-            if (wSpeed > 1.1f)
-                text.text = "Running!!!\n";
+            // if (wSpeed > 1.1f)
+            //     text.text = "Running!!!\n";
 		} catch (System.Exception e) {
 			Debug.LogWarning(e.Message);
 		}
