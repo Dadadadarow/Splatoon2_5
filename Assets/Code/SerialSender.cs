@@ -13,5 +13,9 @@ public class SerialSender : MonoBehaviour
         {
             serialHandlerOut.Write("1");
         }
+        if(Input.GetKeyDown(KeyCode.S))
+        {
+            serialHandlerOut.Write("2");
+        }
     }
 }
