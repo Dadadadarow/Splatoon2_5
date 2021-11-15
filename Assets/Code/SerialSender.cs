@@ -9,13 +9,15 @@ public class SerialSender : MonoBehaviour
 
     void Update() //ここは0.001秒ごとに実行される
     {
-        if(Input.GetKeyDown(KeyCode.A))
+        if(playerController_1ino.sflag1 == 1)
         {
             serialHandlerOut.Write("1");
+            playerController_1ino.sflag1 = 0;
         }
-        if(Input.GetKeyDown(KeyCode.S))
+        if(playerController_2ino.sflag2 == 1)
         {
             serialHandlerOut.Write("2");
+            playerController_2ino.sflag2 = 0;
         }
     }
 }

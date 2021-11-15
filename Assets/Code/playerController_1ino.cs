@@ -18,9 +18,10 @@ public class playerController_1ino : MonoBehaviour
     float gyro = 0.0f;
     public static int trigger = 0;
     public SerialHandlerIn1 serialHandlerIn;
-	public Text text;
+	//public Text text;
 
-    int state;
+    public static int state1;
+    public static int sflag1 = 0;
 
 	// private SerialPort serialPort;
     // test
@@ -34,24 +35,25 @@ public class playerController_1ino : MonoBehaviour
     {
         transform.Rotate(0f, 0f, -90f);
         this.rigid.constraints = RigidbodyConstraints.FreezeRotationZ;
-        transform.position = new Vector3(4.89f, 4.5f, 29.66f);
+        transform.position = new Vector3(4.75f, 4.5f, 29.3f);
         //MainCamera1.SetActive(true);
     }
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "yellow_bullet" && state != 3)
+        if (other.gameObject.tag == "yellow_bullet" && state1 != 3)
         {
-            state += 1;
+            state1 += 1;
+            sflag1 = 1;
         }
-        if (other.gameObject.tag == "yellow_bullet" && state==3)
+        if (other.gameObject.tag == "yellow_bullet" && state1 == 3)
         {
-            state = 0;
+            state1 = 0;
             //this.rigid = this.GetComponent<Rigidbody>();
             //this.rigid.constraints = RigidbodyConstraints.None;
             //this.rigid.constraints = RigidbodyConstraints.FreezeRotationX;
             //transform.Rotate(0f, 0f, 90f);
-            transform.position = new Vector3(4.89f, -4.5f, 29.66f);
+            transform.position = new Vector3(4.75f, -4.5f, 29.3f);
             //MainCamera1.SetActive(false);
             Invoke(nameof(Respawn), 3f);
             
@@ -108,8 +110,8 @@ public class playerController_1ino : MonoBehaviour
             // Debug.Log(gyro);
             trigger = int.Parse(angles[2]);
 
-            if (wSpeed > 1.1f)
-                text.text = "Running!!!\n";
+            // if (wSpeed > 1.1f)
+            //     text.text = "Running!!!\n";
 		} catch (System.Exception e) {
 			Debug.LogWarning(e.Message);
 		}
