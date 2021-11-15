@@ -18,7 +18,7 @@ public class playerController : MonoBehaviour
     float gyro = 0.0f;
     public static int trigger = 0;
     public SerialHandlerIn serialHandlerIn;
-	// public Text text;
+	public Text text;
 
 	// private SerialPort serialPort;
     // test
@@ -76,12 +76,12 @@ public class playerController : MonoBehaviour
             // text.text = "x:" + angles[0] + "\n" + "y:" + angles[1] + "\n" + "z:" + angles[2] + "\n" + "Speed:" + angles[3] + "Gyro:" + angles[4] + "\n"; // シリアルの値をテキストに表示
 			wSpeed = float.Parse(angles[0]);
             //control = float.Parse(angles[1]);
-            gyro = float.Parse(angles[4]);
+            gyro = float.Parse(angles[1]);
             // Debug.Log(gyro);
-            trigger = int.Parse(angles[5]);
+            trigger = int.Parse(angles[2]);
 
-            // if (wSpeed > 1.1f)
-            //     text.text = "Running!!!\n";
+            if (wSpeed > 1.1f)
+                text.text = "Running!!!\n";
 		} catch (System.Exception e) {
 			Debug.LogWarning(e.Message);
 		}
