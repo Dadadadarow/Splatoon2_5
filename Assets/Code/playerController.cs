@@ -18,17 +18,53 @@ public class playerController : MonoBehaviour
     public SerialHandler serialHandler;
 	public Text text;
 
+
+    int state;
+
 	// private SerialPort serialPort;
     // test
+
+    
+
 	void Start()
     {
         this.rigid = GetComponent<Rigidbody>();
         transform.Rotate(0f,180f,0f);
 		serialHandler.OnDataReceived += OnDataReceived;
+        //MainCamera1 = Transform.Find("/player_red2_1/MainCamera1");
+    }
+
+    void Respone() 
+    {
+        transform.Rotate(0f, 0f, -90f);
+        this.rigid.constraints = RigidbodyConstraints.FreezeRotationZ;
+        transform.position = new Vector3(4.89f, 4.5f, 29.66f);
+        //MainCamera1.SetActive(true);
+    }
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "yellow_bullet" && state != 3)
+        {
+            state += 1;
+        }
+        if (other.gameObject.tag == "yellow_bullet" && state==3)
+        {
+            state = 0;
+            //this.rigid = this.GetComponent<Rigidbody>();
+            //this.rigid.constraints = RigidbodyConstraints.None;
+            //this.rigid.constraints = RigidbodyConstraints.FreezeRotationX;
+            //transform.Rotate(0f, 0f, 90f);
+            transform.position = new Vector3(4.89f, -4.5f, 29.66f);
+            //MainCamera1.SetActive(false);
+            Invoke(nameof(Respone), 3f);
+            
+        }
     }
 
     void Update() 
     {
+        Debug.Log(state);
 
         if (Input.GetKeyDown(KeyCode.Z)){
             GetComponent<AudioSource>().Play();
