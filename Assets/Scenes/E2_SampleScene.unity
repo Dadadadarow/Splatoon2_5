@@ -2783,6 +2783,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8968661459505026056, guid: 42bba71d80104434993503aceba5c702, type: 3}
   m_PrefabInstance: {fileID: 2059439841}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &467648551
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 467648553}
+  - component: {fileID: 467648552}
+  m_Layer: 0
+  m_Name: SerialHandlerIn2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &467648552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467648551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d127023fef48fb64a9f52f035b650546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portName: COM11
+  baudRate: 115200
+--- !u!4 &467648553
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467648551}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.2858486, y: -8.634213, z: 1.7565899}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 52
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &477749432
 GameObject:
   m_ObjectHideFlags: 0
@@ -3514,7 +3559,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &772888443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3989,11 +4034,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 868752317}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 003e0da89fc19394f99383e518afce6c, type: 3}
+  m_Script: {fileID: 11500000, guid: f39b8ce96aece1b40976038472b94be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serialHandler: {fileID: 116898003}
-  text: {fileID: 1305292829}
+  serialHandlerIn: {fileID: 467648552}
+  text: {fileID: 0}
 --- !u!114 &868752327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6074,11 +6119,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1789285744}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e084b5ef541f74e51a9ea6443d7ac3c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fe8f60fd8994f34caa997584df5b849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serialHandler: {fileID: 116898003}
-  text: {fileID: 1305292829}
+  serialHandlerIn: {fileID: 2092362669}
+  text: {fileID: 0}
 --- !u!54 &1789285756
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6719,6 +6764,51 @@ MonoBehaviour:
   bullet: {fileID: 8942479694961073613, guid: a338a7d16df69a647a88638e59e5a1d0, type: 3}
   muzzle: {fileID: 2019040663}
   speed: 1000
+--- !u!1 &2092362668
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2092362670}
+  - component: {fileID: 2092362669}
+  m_Layer: 0
+  m_Name: SerialHandlerIn1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2092362669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092362668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f9eb8f16ed75fb4092e781987565d01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portName: COM8
+  baudRate: 115200
+--- !u!4 &2092362670
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092362668}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.2858486, y: -8.634213, z: 1.7565899}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 51
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2101569303
 PrefabInstance:
   m_ObjectHideFlags: 0
