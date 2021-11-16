@@ -16,7 +16,8 @@ public class playerController_2ino : MonoBehaviour
     float wSpeed = 0.0f;
     // float control = 0.0f;
     float gyro = 0.0f;
-    public static int trigger = 0;
+    public static int trigger2 = 0;
+    public static int pre_trigger2 = 0;
     public SerialHandlerIn2 serialHandlerIn;
 	//public Text text;
 
@@ -29,6 +30,7 @@ public class playerController_2ino : MonoBehaviour
     {
         this.rigid = GetComponent<Rigidbody>();
         transform.Rotate(0f,0f,0f);
+        // this.rigid.constraints = RigidbodyConstraints.FreezeRotationZ;
 		serialHandlerIn.OnDataReceived += OnDataReceived;
     }
     void Respawn() 
@@ -62,7 +64,7 @@ public class playerController_2ino : MonoBehaviour
     void Update() 
     {
 
-        if (trigger == 1){
+        if (trigger2 == 1){
             GetComponent<AudioSource>().Play();
         }
 
@@ -90,8 +92,8 @@ public class playerController_2ino : MonoBehaviour
         //回転終了
 
         //直進
-        if (wSpeed > 1.0f)
-            maxSpeed = 5.0f;
+        if (wSpeed > 1.2f)
+            maxSpeed = 4.0f;
         else
             maxSpeed = 2.0f;
         float speed = Mathf.Sqrt(rigid.velocity.x*rigid.velocity.x+rigid.velocity.z*rigid.velocity.z);
@@ -108,7 +110,7 @@ public class playerController_2ino : MonoBehaviour
             //control = float.Parse(angles[1]);
             gyro = float.Parse(angles[1]);
             // Debug.Log(gyro);
-            trigger = int.Parse(angles[2]);
+            trigger2 = int.Parse(angles[2]);
 
             //if (wSpeed > 1.1f)
                 //text.text = "Running!!!\n";

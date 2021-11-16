@@ -12,11 +12,13 @@ public class SerialSender : MonoBehaviour
         if(playerController_1ino.sflag1 == 1)
         {
             serialHandlerOut.Write("1");
+            Debug.Log("send serial code 1");
             playerController_1ino.sflag1 = 0;
         }
         if(playerController_2ino.sflag2 == 1)
         {
             serialHandlerOut.Write("2");
+            Debug.Log("send serial code 2");
             playerController_2ino.sflag2 = 0;
         }
     }

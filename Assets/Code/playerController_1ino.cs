@@ -10,13 +10,15 @@ public class playerController_1ino : MonoBehaviour
     //Vector3 jairoDir = new Vector3(0f, 0f, 0f);
     float minAngle = 180f;
 	float maxAngle = 180f;
+
     Rigidbody rigid;
     float force = 45.0f;
     float maxSpeed = 2.0f;
     float wSpeed = 0.0f;
     // float control = 0.0f;
     float gyro = 0.0f;
-    public static int trigger = 0;
+    public static int trigger1 = 0;
+    public static int pre_trigger1 = 0;
     public SerialHandlerIn1 serialHandlerIn;
 	//public Text text;
 
@@ -30,11 +32,13 @@ public class playerController_1ino : MonoBehaviour
         this.rigid = GetComponent<Rigidbody>();
         transform.Rotate(0f,180f,0f);
 		serialHandlerIn.OnDataReceived += OnDataReceived;
+        // this.rigid.constraints = RigidbodyConstraints.FreezeRotationZ;
+        // ↑これやるとなんか暴走する
     }
     void Respawn() 
     {
         transform.Rotate(0f, 0f, -90f);
-        this.rigid.constraints = RigidbodyConstraints.FreezeRotationZ;
+        // this.rigid.constraints = RigidbodyConstraints.FreezeRotationZ;
         transform.position = new Vector3(4.75f, 4.5f, 29.3f);
         //MainCamera1.SetActive(true);
     }
@@ -62,7 +66,7 @@ public class playerController_1ino : MonoBehaviour
     void Update() 
     {
 
-        if (trigger == 1){
+        if (trigger1 == 1){
             GetComponent<AudioSource>().Play();
         }
 
@@ -71,18 +75,18 @@ public class playerController_1ino : MonoBehaviour
         //本来はジャイロセンサーから値を読み取ってjairoに入れ込む
         //今は特別にキー入力とする。
         //if (Input.GetKeyDown(KeyCode.RightArrow))
-        if (gyro < -1.2f)
-        {
-            jairo += 1;
-        }
-        //if (Input.GetKeyDown(KeyCode.LeftArrow))
-        if (gyro > 1.2f)
-        {
-            jairo -= 1;
-        }
+        // if (gyro < -1.2f)
+        // {
+        //     jairo += 1;
+        // }
+        // //if (Input.GetKeyDown(KeyCode.LeftArrow))
+        // if (gyro > 1.2f)
+        // {
+        //     jairo -= 1;
+        // }
 
         //Debug.Log(jairo);
-        maxAngle = jairo;
+        maxAngle = -gyro;
 
         //minAngle(225)とmaxAngle(225+jairo)の差分を細かく分けて滑らかに回転
         float angle = Mathf.LerpAngle(minAngle, maxAngle, Time.time);
@@ -90,14 +94,15 @@ public class playerController_1ino : MonoBehaviour
         //回転終了
 
         //直進
-        if (wSpeed > 1.0f)
-            maxSpeed = 5.0f;
+        if (wSpeed > 1.2f)
+            maxSpeed = 4.0f;
         else
             maxSpeed = 2.0f;
         float speed = Mathf.Sqrt(rigid.velocity.x*rigid.velocity.x+rigid.velocity.z*rigid.velocity.z);
         if (speed < this.maxSpeed)
         {
-            this.rigid.AddForce(force*Mathf.Sin(jairo*Mathf.Deg2Rad), 0, force*Mathf.Cos(jairo*Mathf.Deg2Rad));
+            float ay = gameObject.transform.localEulerAngles.y;
+            this.rigid.AddForce(force*Mathf.Sin(ay*Mathf.Deg2Rad), 0, force*Mathf.Cos(ay*Mathf.Deg2Rad));
         }
     }
 	void OnDataReceived(string message) {
@@ -108,7 +113,7 @@ public class playerController_1ino : MonoBehaviour
             //control = float.Parse(angles[1]);
             gyro = float.Parse(angles[1]);
             // Debug.Log(gyro);
-            trigger = int.Parse(angles[2]);
+            trigger1 = int.Parse(angles[2]);
 
             // if (wSpeed > 1.1f)
             //     text.text = "Running!!!\n";
