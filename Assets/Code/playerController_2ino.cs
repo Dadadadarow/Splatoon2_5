@@ -35,9 +35,9 @@ public class playerController_2ino : MonoBehaviour
     }
     void Respawn() 
     {
-        transform.Rotate(0f, 0f, -90f);
-        this.rigid.constraints = RigidbodyConstraints.FreezeRotationZ;
-        transform.position = new Vector3(-4.75f, 4.5f, 29.3f);
+        //transform.Rotate(0f, 0f, -90f);
+        //this.rigid.constraints = RigidbodyConstraints.FreezeRotationZ;
+        transform.position = new Vector3(-4.75f, 4.5f, -29.3f);
         //MainCamera1.SetActive(true);
     }
 
@@ -55,7 +55,7 @@ public class playerController_2ino : MonoBehaviour
             //this.rigid.constraints = RigidbodyConstraints.None;
             //this.rigid.constraints = RigidbodyConstraints.FreezeRotationX;
             //transform.Rotate(0f, 0f, 90f);
-            transform.position = new Vector3(4.75f, -4.5f, 29.3f);
+            transform.position = new Vector3(4.75f, -4.5f, -29.3f);
             //MainCamera1.SetActive(false);
             Invoke(nameof(Respawn), 3f);
             
@@ -75,12 +75,12 @@ public class playerController_2ino : MonoBehaviour
         //if (Input.GetKeyDown(KeyCode.RightArrow))
         if (gyro < -1.2f)
         {
-            jairo += 1;
+            jairo += 0.2f;
         }
         //if (Input.GetKeyDown(KeyCode.LeftArrow))
         if (gyro > 1.2f)
         {
-            jairo -= 1;
+            jairo -= 0.2f;
         }
 
         //Debug.Log(jairo);
@@ -99,7 +99,8 @@ public class playerController_2ino : MonoBehaviour
         float speed = Mathf.Sqrt(rigid.velocity.x*rigid.velocity.x+rigid.velocity.z*rigid.velocity.z);
         if (speed < this.maxSpeed)
         {
-            this.rigid.AddForce(force*Mathf.Sin(jairo*Mathf.Deg2Rad), 0, force*Mathf.Cos(jairo*Mathf.Deg2Rad));
+            float ay = gameObject.transform.localEulerAngles.y;
+            this.rigid.AddForce(force*Mathf.Sin(ay*Mathf.Deg2Rad), 0, force*Mathf.Cos(ay*Mathf.Deg2Rad));
         }
     }
 	void OnDataReceived(string message) {

@@ -37,7 +37,7 @@ public class playerController_1ino : MonoBehaviour
     }
     void Respawn() 
     {
-        transform.Rotate(0f, 0f, -90f);
+        //transform.Rotate(0f, 0f, -90f);
         // this.rigid.constraints = RigidbodyConstraints.FreezeRotationZ;
         transform.position = new Vector3(4.75f, 4.5f, 29.3f);
         //MainCamera1.SetActive(true);
@@ -75,18 +75,18 @@ public class playerController_1ino : MonoBehaviour
         //本来はジャイロセンサーから値を読み取ってjairoに入れ込む
         //今は特別にキー入力とする。
         //if (Input.GetKeyDown(KeyCode.RightArrow))
-        // if (gyro < -1.2f)
-        // {
-        //     jairo += 1;
-        // }
-        // //if (Input.GetKeyDown(KeyCode.LeftArrow))
-        // if (gyro > 1.2f)
-        // {
-        //     jairo -= 1;
-        // }
+        if (gyro < -1.2f)
+        {
+            jairo += 0.2f;
+        }
+        //if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (gyro > 1.2f)
+        {
+            jairo -= 0.2f;
+        }
 
         //Debug.Log(jairo);
-        maxAngle = -gyro;
+        maxAngle = jairo;
 
         //minAngle(225)とmaxAngle(225+jairo)の差分を細かく分けて滑らかに回転
         float angle = Mathf.LerpAngle(minAngle, maxAngle, Time.time);
