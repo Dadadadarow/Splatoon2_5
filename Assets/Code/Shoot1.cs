@@ -21,7 +21,10 @@ public class Shoot1 : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         // z キーが押された時
-        if (playerController_1ino.pre_trigger1 == 0 && playerController_1ino.trigger1 == 1){
+        if(Input.GetKeyDown(KeyCode.Z))
+        // triggerが押された時
+        // if (playerController_1ino.pre_trigger1 == 0 && playerController_1ino.trigger1 == 1)
+        {
             
             // 弾丸の複製
             GameObject bullets = Instantiate(bullet) as GameObject;

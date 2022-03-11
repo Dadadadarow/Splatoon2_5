@@ -53,5 +53,6 @@ public class paintcubeController : MonoBehaviour
     void Update()
     {
         Debug.Log(yellowPoint);
+        Debug.Log(redPoint);
     }
 }
