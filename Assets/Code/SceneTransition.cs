@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransition : MonoBehaviour
 {
+    public string Scene;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,7 @@ public class SceneTransition : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown("s")) {
-           SceneManager.LoadScene("20220228_SampleScene", LoadSceneMode.Single); 
+           SceneManager.LoadScene(Scene, LoadSceneMode.Single); 
        }
         
     }
