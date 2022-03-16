@@ -10,7 +10,7 @@ public class paint2Controller : MonoBehaviour
       // 現在使用されているマテリアルを取得
       Material mat = this.GetComponent<Renderer>().material;
       // マテリアルの色設定に赤色を設定
-      mat.color = new Color(1.0f,1.0f,1.0f,0.3f);
+      mat.color = new Color(1.0f,1.0f,1.0f,0.0f);
     }
 
     void OnTriggerEnter(Collider other)
@@ -19,7 +19,7 @@ public class paint2Controller : MonoBehaviour
         if (other.gameObject.tag == "yellow_bullet")
         {
             Material mat = this.GetComponent<Renderer>().material;
-            mat.color = new Color(1.0f,1.0f,0.0f,0.3f);
+            mat.color = new Color(1.0f,1.0f,0.0f,0.0f);
             if (color == 0 || color == 2)
             {
                 paintcubeController.yellowPoint += 1;
@@ -34,7 +34,7 @@ public class paint2Controller : MonoBehaviour
         else if (other.gameObject.tag == "red_bullet")
         {
             Material mat = this.GetComponent<Renderer>().material;
-            mat.color = new Color(1.0f,0.0f,0.0f,0.3f);
+            mat.color = new Color(1.0f,0.0f,0.0f,0.0f);
             if (color == 0 || color == 1)
             {
                 paintcubeController.redPoint += 1;   
