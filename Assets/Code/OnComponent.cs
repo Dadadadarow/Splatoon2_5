@@ -21,7 +21,7 @@ public class OnComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Timer.countTime <= 165.0f){
+        if(Timer.countTime <= -5.0f){
             olive.enabled = true;
             goma.enabled = true;
             if(paintcubeController.yellowPoint > paintcubeController.redPoint){

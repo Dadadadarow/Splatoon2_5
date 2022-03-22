@@ -21,7 +21,7 @@ public class OffGameobject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Timer.countTime <= 170.0f){
+        if(Timer.countTime <= 0.0f){
             obj1.SetActive(false);
             obj2.SetActive(false);
             obj3.SetActive(false);

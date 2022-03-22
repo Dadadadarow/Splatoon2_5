@@ -26,7 +26,7 @@ public class Timer : MonoBehaviour
         seconds = Mathf.FloorToInt(countTime%60);
         // 何分何秒で表示
         GetComponent<Text>().text = string.Format("{0:00}:{1:00}", minutes, seconds);
-        if (countTime <= 170.0f)
+        if (countTime <= 0.0f)
         {
             FinalCamera.SetActive(true);
         }

@@ -17,7 +17,7 @@ public class EndWhistle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Timer.countTime <= 170.0f)
+        if (Timer.countTime <= 0.0f)
         {
             audioSource.PlayOneShot(whistle);
         }
