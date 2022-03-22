@@ -19,7 +19,7 @@ public class Shoot1 : MonoBehaviour {
 	void Start ()
     {
         audioSource = GetComponent<AudioSource>();
-        audioSource.volume = 0.3f;
+        audioSource.volume = 0.7f;
 	}
 	
 	// Update is called once per frame

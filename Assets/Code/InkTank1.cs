@@ -8,6 +8,9 @@ public class InkTank1 : MonoBehaviour
 {
     public Slider ink;
     public  GameObject player1;
+    public AudioClip reloadsound;
+    public AudioClip OutOfBullets;
+    private AudioSource audioSource;
     private float tank;
     public float fulltank;
     public float reloadtime = 2.0f;
@@ -15,6 +18,8 @@ public class InkTank1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume = 0.7f;
         ink = GameObject.Find("Ink_1").GetComponent<Slider>();
         ink.minValue = 0.0f;
         ink.maxValue = fulltank;
@@ -39,10 +44,14 @@ public class InkTank1 : MonoBehaviour
 
         if(tank <= 0){
             player1.GetComponent<Shoot1>().enabled = false;
+            if(Input.GetKeyDown(KeyCode.Z)){
+                audioSource.PlayOneShot(OutOfBullets);
+            }
         }
 
         if(Input.GetKeyDown(KeyCode.R)){
             reloadtime -= Time.deltaTime;
+            audioSource.PlayOneShot(reloadsound);
             player1.GetComponent<Shoot1>().enabled = false;
             Invoke(nameof(Reload), 2.0f);
         }

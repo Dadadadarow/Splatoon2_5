@@ -10,6 +10,8 @@ public class OffGameobject : MonoBehaviour
     public GameObject obj4;
     public GameObject obj5;
     public GameObject obj6;
+    public GameObject obj7;
+    public GameObject obj8;
 
 
     // Start is called before the first frame update
@@ -28,6 +30,8 @@ public class OffGameobject : MonoBehaviour
             obj4.SetActive(false);
             obj5.SetActive(false);
             obj6.SetActive(false);
+            obj7.SetActive(false);
+            obj8.SetActive(false);
         }
     }
 }
