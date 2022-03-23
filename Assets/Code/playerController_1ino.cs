@@ -13,10 +13,12 @@ public class playerController_1ino : MonoBehaviour
 
     Rigidbody rigid;
     float force = 45.0f;
-    float maxSpeed = 2.0f;
+    float maxSpeed = 5.0f;
     float wSpeed = 0.0f;
     // float control = 0.0f;
     float gyro = 0.0f;
+    private float pos_x = 0.0f;
+    private float pos_y = 0.0f;
     public static int trigger1 = 0;
     public static int pre_trigger1 = 0;
     public SerialHandlerIn1 serialHandlerIn;
@@ -24,6 +26,7 @@ public class playerController_1ino : MonoBehaviour
 
     public static int state1;
     public static int sflag1 = 0;
+    private Vector3 velocity;
 
 	// private SerialPort serialPort;
     // test
@@ -66,9 +69,9 @@ public class playerController_1ino : MonoBehaviour
     void Update() 
     {
 
-        if (trigger1 == 1){
-            GetComponent<AudioSource>().Play();
-        }
+        // if (trigger1 == 1){
+        //     GetComponent<AudioSource>().Play();
+        // }
 
         //回転と直進の２つに分割する。
         //回転
@@ -77,12 +80,12 @@ public class playerController_1ino : MonoBehaviour
         //if (Input.GetKeyDown(KeyCode.RightArrow))
         if (gyro < -1.2f)
         {
-            jairo += 0.2f;
+            jairo += 0.5f;
         }
         //if (Input.GetKeyDown(KeyCode.LeftArrow))
         if (gyro > 1.2f)
         {
-            jairo -= 0.2f;
+            jairo -= 0.5f;
         }
 
         //Debug.Log(jairo);
@@ -94,26 +97,37 @@ public class playerController_1ino : MonoBehaviour
         //回転終了
 
         //直進
-        if (wSpeed > 1.2f)
-            maxSpeed = 4.0f;
-        else
-            maxSpeed = 2.0f;
-        float speed = Mathf.Sqrt(rigid.velocity.x*rigid.velocity.x+rigid.velocity.z*rigid.velocity.z);
-        if (speed < this.maxSpeed)
+        // if (wSpeed > 1.2f)
+        //     maxSpeed = 4.0f;
+        // else
+        //     maxSpeed = 2.0f;
+        // float speed = Mathf.Sqrt(rigid.velocity.x*rigid.velocity.x+rigid.velocity.z*rigid.velocity.z);
+        // if (speed < this.maxSpeed)
+        // {
+        //     float ay = gameObject.transform.localEulerAngles.y;
+        //     this.rigid.AddForce(force*Mathf.Sin(ay*Mathf.Deg2Rad), 0, force*Mathf.Cos(ay*Mathf.Deg2Rad));
+        // }
+        float theta = transform.eulerAngles.y * Mathf.Deg2Rad;
+        velocity.x = pos_x * Mathf.Cos(theta) + pos_y * Mathf.Sin(theta);
+        velocity.z = pos_y * Mathf.Cos(theta) - pos_x * Mathf.Sin(theta);
+        velocity = velocity.normalized * maxSpeed * Time.deltaTime;
+
+        if (velocity.magnitude > 0)
         {
-            float ay = gameObject.transform.localEulerAngles.y;
-            this.rigid.AddForce(force*Mathf.Sin(ay*Mathf.Deg2Rad), 0, force*Mathf.Cos(ay*Mathf.Deg2Rad));
+            transform.position += velocity;
         }
+
     }
 	void OnDataReceived(string message) {
 		try {
 			string[] angles = message.Split(',');
             // text.text = "x:" + angles[0] + "\n" + "y:" + angles[1] + "\n" + "z:" + angles[2] + "\n" + "Speed:" + angles[3] + "Gyro:" + angles[4] + "\n"; // シリアルの値をテキストに表示
-			wSpeed = float.Parse(angles[0]);
             //control = float.Parse(angles[1]);
-            gyro = float.Parse(angles[1]);
+            gyro = float.Parse(angles[0]);
             // Debug.Log(gyro);
-            trigger1 = int.Parse(angles[2]);
+            trigger1 = int.Parse(angles[1]);
+            pos_x = float.Parse(angles[2]);
+            pos_y = float.Parse(angles[3]);
 
             // if (wSpeed > 1.1f)
             //     text.text = "Running!!!\n";

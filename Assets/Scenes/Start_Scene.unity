@@ -253,7 +253,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e992e943051937c4e98dcc1424b0904e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scene: 20220322
+  OnScene: 20220322
+  OffScene: Start_Scene
 --- !u!4 &382441478
 Transform:
   m_ObjectHideFlags: 0
@@ -628,7 +629,7 @@ PrefabInstance:
     - target: {fileID: 8574656788074335196, guid: f3760fdd17b1e004ea64286ff657a17e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 8122850955595500952, guid: 76e2bc54e2bb86a49a0d061c000de2a1, type: 3}
+      objectReference: {fileID: 2100000, guid: 2b441e827ae2cff479563061922172c4, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3760fdd17b1e004ea64286ff657a17e, type: 3}
 --- !u!4 &826450916 stripped
@@ -1415,6 +1416,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8574656788074335196, guid: f3760fdd17b1e004ea64286ff657a17e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0933b15893a7ede49a9d83257900d467, type: 2}
     - target: {fileID: 9041228450777347218, guid: f3760fdd17b1e004ea64286ff657a17e, type: 3}
       propertyPath: m_Layer
       value: 0

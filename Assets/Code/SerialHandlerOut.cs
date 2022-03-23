@@ -8,7 +8,7 @@ public class SerialHandlerOut : MonoBehaviour
     public event SerialDataReceivedEventHandlerOut OnDataReceived;
 
     // public string portName = "COM8";
-    public string portNameOut = "COM7";
+    public string portNameOut = "COM6";
     public int baudRateOut = 115200;
     private SerialPort serialPort_;
     private Thread thread_;

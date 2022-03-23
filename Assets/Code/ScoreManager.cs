@@ -21,7 +21,7 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
         Text score_text = score_object.GetComponent<Text>();
-        score_text.text = "REDPOINTS:" + paintcubeController.redPoint + "YELLOWPOINTS:" + paintcubeController.yellowPoint;
+        score_text.text = "GOMAPOINTS:" + paintcubeController.redPoint + "OLIVEPOINTS:" + paintcubeController.yellowPoint;
         slider.value = 1000*(paintcubeController.redPoint)/(paintcubeController.redPoint+paintcubeController.yellowPoint);
         //Debug.Log(slider.value);
     }
